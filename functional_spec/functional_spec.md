@@ -220,7 +220,8 @@ process takes place entirely through Java.
 **2.3.1 User Interface**
 
 The grid generated will also be a constant area.
-<img src="media/image1.png" width="601" height="445" />
+![](https://i.imgur.com/VQQMAXR.png)
+
 
 **Figure 1: What running the program may look like.**
 
@@ -429,7 +430,8 @@ This will depend on the what algorithm the user selects.
 
 4. System Architecture
 
-<img src="media/image2.png" width="601" height="436" />
+![](https://i.imgur.com/CwP3Mvv.png)
+
 
 ***Figure 2.***
 
@@ -496,7 +498,9 @@ hold the above three parameters. However, out of these eight
 combinations only four of them allow for possible search states and this
 is shown in the below state diagram (figure 3):
 
-<img src="media/image3.png" width="793" height="344" />
+
+![](https://i.imgur.com/YEvcQnC.png)
+
 
 **Figure 3.**
 
@@ -506,7 +510,8 @@ The schedule below was designed using Smartsheet. The Gannt chart
 (Figure 4) shows the plan of how and when tasks are to be completed.
 Each task is represented by a bar.
 
-<img src="media/image4.png" width="842" height="215" />
+![](https://i.imgur.com/1kDl41H.png)
+
 
 Figure 4
 
