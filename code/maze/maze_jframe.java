@@ -7,7 +7,7 @@ package maze_swing;
 
 /**
  *
- * @author 8fact
+ * @author David and Ore
  */
 public class maze_jframe extends javax.swing.JFrame {
 
@@ -38,7 +38,7 @@ public class maze_jframe extends javax.swing.JFrame {
         row_label = new java.awt.Label();
         column_label = new java.awt.Label();
         grid_space = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        grid = new javax.swing.JLabel();
         right_panel_with_radio_buttons = new javax.swing.JPanel();
         dfs_radio_button = new javax.swing.JRadioButton();
         astar_radio_button = new javax.swing.JRadioButton();
@@ -134,20 +134,20 @@ public class maze_jframe extends javax.swing.JFrame {
         grid_space.setBackground(new java.awt.Color(0, 0, 0));
         grid_space.setPreferredSize(new java.awt.Dimension(500, 500));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maze_swing/images/grid.png"))); // NOI18N
+        grid.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maze_swing/images/grid.png"))); // NOI18N
 
         javax.swing.GroupLayout grid_spaceLayout = new javax.swing.GroupLayout(grid_space);
         grid_space.setLayout(grid_spaceLayout);
         grid_spaceLayout.setHorizontalGroup(
             grid_spaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(grid_spaceLayout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(grid)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         grid_spaceLayout.setVerticalGroup(
             grid_spaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(grid_spaceLayout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(grid)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -298,8 +298,8 @@ public class maze_jframe extends javax.swing.JFrame {
     private javax.swing.JRadioButton dfs_radio_button;
     private javax.swing.JRadioButton dijkstra;
     private javax.swing.JRadioButton greedy_radio_button;
+    private javax.swing.JLabel grid;
     private javax.swing.JPanel grid_space;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton maze1;
     private javax.swing.JButton new_grid;
     private javax.swing.JButton play;
