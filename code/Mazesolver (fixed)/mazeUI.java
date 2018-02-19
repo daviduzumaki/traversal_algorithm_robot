@@ -41,16 +41,6 @@ public class mazeUI extends JPanel {
             MSG_NO_SOLUTION =
                 "No path to goal exists";
 
-        /*
-         **********************************************************
-         *          Variables of MazePanel class
-         **********************************************************
-         */
-
-
-
-
-
 
          // the size of the tip of the arrow
                                       // pointing the predecessor cell
