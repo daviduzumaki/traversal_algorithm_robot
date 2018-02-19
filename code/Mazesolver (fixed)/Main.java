@@ -19,7 +19,7 @@ public class Main {
         mazeFrame.setContentPane(new MazePanel(width,height));
         mazeFrame.pack();
         mazeFrame.setResizable(false);
-        //the form is located in the center of the screen
+        //it loads on the centre of the screen
         mazeFrame.setLocationRelativeTo(null);
         mazeFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mazeFrame.setVisible(true);
@@ -31,4 +31,4 @@ public class Main {
   
     
     
-} // end class Maze
+} // end class mazesolver
