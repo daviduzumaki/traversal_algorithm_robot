@@ -16,7 +16,7 @@ public class Main {
         int height = 1200;
         mazeFrame = new JFrame("Maze Search by David And Ore");
         //The area where the grid is located
-        mazeFrame.setContentPane(new MazePanel(width,height));
+        mazeFrame.setContentPane(new mazeUI(width,height));
         mazeFrame.pack();
         mazeFrame.setResizable(false);
         //it loads on the centre of the screen
