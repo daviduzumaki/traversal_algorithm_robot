@@ -1,6 +1,7 @@
 package mazesolver;
 
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 
@@ -17,7 +18,8 @@ public class Main {
         mazeFrame = new JFrame("Maze Search by David And Ore");
         //The area where the grid is located
         mazeFrame.setContentPane(new mazeUI(width,height));
-        mazeFrame.pack();
+        mazeFrame.getContentPane().setBackground(Color.DARK_GRAY.darker());
+        mazeFrame.pack(); 
         mazeFrame.setResizable(false);
         //it loads on the centre of the screen
         mazeFrame.setLocationRelativeTo(null);
