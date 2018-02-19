@@ -235,10 +235,3 @@ public class mazeUI extends JPanel {
 
         } // end constructor
 
-     /**
-         * Creates a new clean grid or a new maze
-         */
-
-         int rows    = 20,           // the number of rows of the grid
-             columns = 20,           // the number of columns of the grid
-             gridSize = 800/rows;  //size of grid in pixels. Should coorelate with dimensions of the Jframe
