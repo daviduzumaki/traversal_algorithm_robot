@@ -68,11 +68,11 @@ public class createMaze {
                         other.neighbors.add(this);
                 }
                 // used in updateGrid()
-                boolean isCellBelowNeighbor() {
+                boolean isNodeBelowNeighbor() {
                     return this.neighbors.contains(new Node(this.x, this.y + 1));
                 }
                 // used in updateGrid()
-                boolean isCellRightNeighbor() {
+                boolean isNodeRightNeighbor() {
                     return this.neighbors.contains(new Node(this.x + 1, this.y));
                 }
                 // useful Cell equivalence
@@ -97,7 +97,7 @@ public class createMaze {
             }
             // generate the maze from coordinates x, y
             private void generateMaze(int x, int y) {
-                generateMaze(getCell(x, y)); // generate from Cell
+                generateMaze(getNode(x, y)); // generate from Cell
             }
             private void generateMaze(Node startAt) {
                 // don't generate from cell not there
@@ -118,10 +118,10 @@ public class createMaze {
                     ArrayList<Node> neighbors = new ArrayList<>();
                     // cells that could potentially be neighbors
                     Node[] potentialNeighbors = new Node[]{
-                        getCell(cell.x + 1, cell.y),
-                        getCell(cell.x, cell.y + 1),
-                        getCell(cell.x - 1, cell.y),
-                        getCell(cell.x, cell.y - 1)
+                        getNode(cell.x + 1, cell.y),
+                        getNode(cell.x, cell.y + 1),
+                        getNode(cell.x - 1, cell.y),
+                        getNode(cell.x, cell.y - 1)
                     };
                     for (Node other : potentialNeighbors) {
                         // skip if outside, is a wall or is not opened
@@ -141,7 +141,7 @@ public class createMaze {
                 updateGrid();
             }
             // used to get a Cell at x, y; returns null out of bounds
-            public Node getCell(int x, int y) {
+            public Node getNode(int x, int y) {
                 try {
                     return nodes[x][y];
                 } catch (ArrayIndexOutOfBoundsException e) { // catch out of bounds
@@ -163,12 +163,12 @@ public class createMaze {
                 // make meaningful representation
                 for (int x = 0; x < row; x++)
                     for (int y = 0; y < column; y++) {
-                        Node current = getCell(x, y);
+                        Node current = getNode(x, y);
                         int gridX = x * 2 + 1, gridY = y * 2 + 1;
                         mazeGrid[gridX][gridY] = cellChar;
-                        if (current.isCellBelowNeighbor())
+                        if (current.isNodeBelowNeighbor())
                             mazeGrid[gridX][gridY + 1] = cellChar;
-                        if (current.isCellRightNeighbor())
+                        if (current.isNodeRightNeighbor())
                             mazeGrid[gridX + 1][gridY] = cellChar;
                     }
             }
