@@ -1,5 +1,4 @@
 
-
 package mazesolver;
 
 import java.awt.Color;
@@ -51,7 +50,7 @@ public class mazeUI extends JPanel {
                 
 
         
-                                      // pointing the predecessor cell
+                                    
         ArrayList<Node> openSet   = new ArrayList();// the OPEN SET
         ArrayList<Node> closedSet = new ArrayList();// the CLOSED SET
         ArrayList<Node> graph     = new ArrayList();// the set of nodes of the graph
