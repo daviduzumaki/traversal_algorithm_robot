@@ -523,8 +523,7 @@ public class mazeUI extends JPanel {
                 endOfSearch = true;
                 grid[robotStart.row][robotStart.col]=ROBOT;
                 message.setText(MSG_NO_SOLUTION);
-                
-                
+              
                 drawPathButton.setEnabled(false);
                 repaint();
             } else {
@@ -541,10 +540,6 @@ public class mazeUI extends JPanel {
                     if (endOfSearch = true & dfs.isSelected()){
                         disableUIElements();
                         super.add(dfsMessage);
-                        
-                        
-                       
-                       
                     }
                     
                 }
