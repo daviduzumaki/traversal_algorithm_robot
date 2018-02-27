@@ -1,4 +1,3 @@
-
 package mazesolver;
 
 import java.awt.Color;
@@ -42,14 +41,7 @@ public class mazeUI extends JPanel {
                 + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
                 + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
                 + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>";
-        
-            
-            
-                
-            
-                
-
-        
+    
                                     
         ArrayList<Node> openSet   = new ArrayList();// the OPEN SET
         ArrayList<Node> closedSet = new ArrayList();// the CLOSED SET
