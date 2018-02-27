@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 /** 
  * 
- * @author 8fact
+ * @author David and Ore
  */
 
 
