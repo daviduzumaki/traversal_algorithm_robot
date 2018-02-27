@@ -18,6 +18,7 @@ public class Main {
   
     
     public static void main(String[] args) {
+        //Gets size of the display and resizes the program accordingly
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width  = (int) screenSize.getWidth()/4;
         int height = (int) ((int) screenSize.getHeight()/1.2);
