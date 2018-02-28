@@ -42,10 +42,55 @@ public class mazeUI extends JPanel {
                 + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
                 + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
                 + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
-                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>";
+                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
+        
+        
+            BFS_MESSAGE = 
+                "<html>Breadth (DFS) is an algorithm for traversing or searching tree or graph data structures.<BR>"
+                + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
+                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
+                + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
+                + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
+                + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
+                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
+                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
+                
+                
+            ASTAR_MESSAGE = 
+                "<html>A star(DFS) is an algorithm for traversing or searching tree or graph data structures.<BR>"
+                + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
+                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
+                + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
+                + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
+                + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
+                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
+                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
         
             
-            
+            GREEDY_MESSAGE = 
+                "<html>greedy(DFS) is an algorithm for traversing or searching tree or graph data structures.<BR>"
+                + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
+                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
+                + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
+                + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
+                + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
+                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
+                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
+                
+                
+            DIJKSTRA_MESSAGE = 
+                "<html>dihj is an algorithm for traversing or searching tree or graph data structures.<BR>"
+                + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
+                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
+                + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
+                + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
+                + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
+                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
+                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>";
                 
             
                 
@@ -61,7 +106,7 @@ public class mazeUI extends JPanel {
         Node goalLocation;  // the position of the goal
       
         //Prints message to the user
-        JLabel message, dfsMessage, speedLabel; 
+        JLabel message, dfsMessage, bfsMessage, astarMessage, greedyMessage, dijkstraMessage, speedLabel; 
         
 
         
@@ -116,6 +161,22 @@ public class mazeUI extends JPanel {
             dfsMessage = new JLabel(DFS_MESSAGE, JLabel.CENTER);
             dfsMessage.setForeground(Color.WHITE);
             dfsMessage.setFont(new Font("Arial",Font.PLAIN,16));
+            
+            bfsMessage = new JLabel(BFS_MESSAGE, JLabel.CENTER);
+            bfsMessage.setForeground(Color.WHITE);
+            bfsMessage.setFont(new Font("Arial",Font.PLAIN,16));
+            
+            astarMessage = new JLabel(ASTAR_MESSAGE, JLabel.CENTER);
+            astarMessage.setForeground(Color.WHITE);
+            astarMessage.setFont(new Font("Arial",Font.PLAIN,16));
+            
+            greedyMessage = new JLabel(GREEDY_MESSAGE, JLabel.CENTER);
+            greedyMessage.setForeground(Color.WHITE);
+            greedyMessage.setFont(new Font("Arial",Font.PLAIN,16));
+            
+            dijkstraMessage = new JLabel(DIJKSTRA_MESSAGE, JLabel.CENTER);
+            dijkstraMessage.setForeground(Color.WHITE);
+            dijkstraMessage.setFont(new Font("Arial",Font.PLAIN,16));
 
 
            //Color design choice dervies from Google's material design: https://material.io/guidelines/style/color.html#color-color-palette
@@ -248,6 +309,10 @@ public class mazeUI extends JPanel {
    
             message.setBounds(58, 850, 400, 75);
             dfsMessage.setBounds(40,450, 400, 500);
+            bfsMessage.setBounds(40,450, 400, 500);
+            astarMessage.setBounds(40,450, 400, 500);
+            greedyMessage.setBounds(40,450, 400, 500);
+            dijkstraMessage.setBounds(40,450, 400, 500);
             mazeButton.setBounds(10, 520, 140, 50); 
             CPUTimeButton.setBounds(10,580, 140, 50);   
             drawPathButton.setBounds(10, 640, 140, 50);
@@ -520,6 +585,14 @@ public class mazeUI extends JPanel {
                 super.remove(resetUI);
                 if (dfs.isSelected()){
                     super.remove(dfsMessage);
+                } else if (bfs.isSelected()){
+                    super.remove(bfsMessage);
+                } else if (aStar.isSelected()){
+                  super.remove(astarMessage);
+                } else if (greedy.isSelected()){
+                  super.remove(greedyMessage);
+                } else if (dijkstra.isSelected()){
+                  super.remove(dijkstraMessage);
                 }
            
         } // end resetUIButtonActionPerformed()
@@ -559,13 +632,20 @@ public class mazeUI extends JPanel {
                     repaint();
                     if (endOfSearch = true & dfs.isSelected()){
                         disableUIElements();
-                        super.add(dfsMessage);
-                        
-                        
-                       
-                       
-                    }
-                    
+                        super.add(dfsMessage);       
+                    } else if (endOfSearch = true & bfs.isSelected()){
+                        disableUIElements();
+                        super.add(bfsMessage);
+                    } else if (endOfSearch = true & aStar.isSelected()){
+                        disableUIElements();
+                        super.add(astarMessage);
+                    } else if (endOfSearch = true & greedy.isSelected()){
+                        disableUIElements();
+                        super.add(greedyMessage);
+                    } else if (endOfSearch = true & dijkstra.isSelected()){
+                        disableUIElements();
+                        super.add(dijkstraMessage);
+                    }                   
                 }
             }
         }
