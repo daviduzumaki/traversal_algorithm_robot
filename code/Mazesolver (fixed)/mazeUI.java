@@ -41,56 +41,54 @@ public class mazeUI extends JPanel {
                 + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
                 + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
                 + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
-                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
-                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
+                + "DFS had to search in order to determine the shortest path.</p></html>",
         
         
             BFS_MESSAGE = 
-                "<html>Breadth (DFS) is an algorithm for traversing or searching tree or graph data structures.<BR>"
+                "<html>Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures. <BR>"
                 + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
-                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                + "<p>and explores the neighbor nodes first, before moving to the next level neighbours.</p><BR>"
                 + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
                 + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
                 + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
                 + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
-                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
+                + "DFS had to search in order to determine the shortest path. BFS is essentially<BR>"
                 + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
                 
                 
             ASTAR_MESSAGE = 
-                "<html>A star(DFS) is an algorithm for traversing or searching tree or graph data structures.<BR>"
-                + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
-                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                "<html>The A* algorithm combines features of uniform-cost search and pure heuristic search to efficiently compute optimal solutions.<BR>"
+                + "The A*algorithm is a best-first search algorithm in which the cost associated with a node is f(n) = g(n) + h(n)<BR>"
+                + "<p>where g(n) is the cost of the path from the initial state to node n and h(n) is the heuristic estimate or the cost or a path from node n to a goal.</p>"
+                + " Thus, f(n) estimates the lowest total cost of any solution path going through node n."
+                + "At each point a node with lowest f value is chosen for expansion."
+                + "Ties among nodes of equal f value should be broken in favor of nodes with lower h values<BR>"
                 + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
-                + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
-                + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
-                + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
-                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
-                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
+                + "Below is shown how many nodes(squares)<BR>"
+                + "A* had to search in order to determine the shortest path. A* is essentially<BR>"
+                + "Dijkstra's algorithm with a heuristic</p></html>",
         
             
             GREEDY_MESSAGE = 
-                "<html>greedy(DFS) is an algorithm for traversing or searching tree or graph data structures.<BR>"
-                + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
-                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                "<html>A greedy algorithm is an algorithmic paradigm that follows the problem solving heuristic of making the locally optimal choice at each stage"
+                + "with the hope of finding a global optimum.<BR>"
                 + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
                 + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
                 + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
                 + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
-                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
+                + "Greedy had to search in order to determine the shortest path. DFS is essentially<BR>"
                 + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>",
                 
                 
             DIJKSTRA_MESSAGE = 
-                "<html>dihj is an algorithm for traversing or searching tree or graph data structures.<BR>"
-                + "One starts at the root (The square in <font color =\"red\">red</font> is the root in this case)<BR>"
-                + "<p>and explores as far as possible along each branch before backtracking.</p><BR>"
+                "<html>Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks.<BR>"
+                + "In this case, a maze.<BR>"
                 + "Pay attention to the path highlighted in <font color =\"yellow\">yellow</font> which indicates the shortest path.<BR>"
                 + "The <font color =\"#FF00FF\">magenta</font> coloured squares represent the closed set (visited nodes).<BR>"
                 + "The <font color =\"#0080ff\">blue</font> squares represent the nodes in the Open set (to be searched).<BR>"
                 + "The <font color =\"#24ae24\">green</font> square is the goal. <p>Below is shown how many nodes(squares)<BR>"
-                + "DFS had to search in order to determine the shortest path. DFS is essentially<BR>"
-                + "Dijkstra's algorithm where all the weights are equal to 1.</p></html>";
+                + "Dijkstra had to search in order to determine the shortest path.<BR>"
+                + "Dijkstra's algorithm uses a heuristic of 0.</p></html>";
                 
             
                 
@@ -310,7 +308,7 @@ public class mazeUI extends JPanel {
             message.setBounds(58, 850, 400, 75);
             dfsMessage.setBounds(40,450, 400, 500);
             bfsMessage.setBounds(40,450, 400, 500);
-            astarMessage.setBounds(40,450, 400, 500);
+            astarMessage.setBounds(40,425, 400, 500);
             greedyMessage.setBounds(40,450, 400, 500);
             dijkstraMessage.setBounds(40,450, 400, 500);
             mazeButton.setBounds(10, 520, 140, 50); 
@@ -678,7 +676,7 @@ public class mazeUI extends JPanel {
          * Expands a node and creates his successors
          */
         private void expandNode(){
-            // Dijkstra's algorithm to handle separately
+            // Dijkstra's algorithm is based off distance between nodes so that is handled seperately.
             if (dijkstra.isSelected()){
                 Node nodeWithLeastDist;
                 // 11: while Q is not empty:
