@@ -69,7 +69,7 @@ To download the program, simply just click on the link provided. Here are the st
 ## **3.2 Program Layout**
 If you have downloaded and installed the program correctly, the layout in image below (Figure 1) is what you should see.
 
-                    ![] (https://imgur.com/53rO5RY.png)
+![] (https://imgur.com/53rO5RY.png)
 
 If all the buttons in the program are not displayed, go to the display setting and set your screen resolution to 1920 x 1080.
 
@@ -79,6 +79,22 @@ If all the buttons in the program are not displayed, go to the display setting a
 The Using the Program section will underline a detailed the description of the programs functions.
 
 ## **4.1 Buttons**
-*	Create Maze – This button allows the user to create any maze. This is the first button the user should click.
+*   Create Maze – This button allows the user to create any maze. This is the first button the user should click. 
 
-                    ![] (https://imgur.com/IfEHjI9.png)
+![] (https://imgur.com/IfEHjI9.png)
+
+*   Search Algorithms – This section of the program layout consists of all the different algorithms the user can select from to search the maze. There are 5 algorithms to select from. 
+
+![] (https://imgur.com/JQRXNz0.png)
+
+*   Draw Path – This button allows the user to choose the speed (in ms) at which the robot searches the maze. The speed can be adjusted by the user as shown below. 
+
+![] (https://imgur.com/OtjDp85.png)
+
+*   Real Time (CPU Time) – The user can click this button to search the maze in real time. After this button has been clicked, to search again the user must click the Create Maze button or the Clear button. 
+
+![] (https://imgur.com/9iPgYHB.png)
+
+*   Clear – The user must clear the maze before they can begin to search it again. 
+
+![] (https://imgur.com/5puhMTr.png)
