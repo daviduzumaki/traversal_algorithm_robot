@@ -98,3 +98,28 @@ The Using the Program section will underline a detailed the description of the p
 *   Clear – The user must clear the maze before they can begin to search it again. 
 
 ![] (https://imgur.com/5puhMTr.png)
+
+*   Back Button – After the robot has finished searching the maze, some information will be displayed below on the algorithm they chose (described in the Reporting section of the User Manual). The user can click this button to go back to the main menu. 
+
+![] (https://imgur.com/8zwnOVU.png)
+
+# Reporting
+
+## **5.0 Reporting**
+The reporting section will describe a detailed explanation of what the user will be seeing as the run the program.
+
+## **5.1 Detailed Explanation of the output**
+After the robot has finished searching the maze, the image below (Figure 2) will be outputted to the user.
+
+![] (https://imgur.com/LCggluK.png)
+
+*   The node that it is red is the root and is also the robots initial position in the maze.
+*   The green node is the goal.
+*   The path highlighted in yellow is the shortest path to the goal.
+*   The magenta coloured squares represent the closed set (visited nodes).
+*   The green squares represent the nodes in the Open set(to be searched).
+
+The user will also see a short description of the algorithm they have chosen, as well as the total number of nodes expanded and the number of squares taken by the shortest path.
+
+![] (https://imgur.com/LCggluK)
+
