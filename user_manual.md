@@ -54,3 +54,16 @@ Maze Solver will work on computers with 32/64-bit Windows 7, 8, or 10 with Intel
 
 ## 2.2 **User Access Levels**
 Anyone that downloads the program will be able to use it if their computer meets the specifications required to run the program.
+
+# **Getting Started**
+
+## 3.0 **Getting Started**
+Getting Started simply explains where to download the maze solver and how to install it onto your computer.
+
+## 3.1 **Download and Installation**
+To download the program, simply just click on the link provided. Here are the steps to installing the program:
+
+    1.	Download the file maze_test.jar from the provided download link.
+    2.	Double click on the file to open when it is installed.
+
+    
