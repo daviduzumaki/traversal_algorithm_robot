@@ -24,8 +24,9 @@ User Manual
 5. **Reporting**.............................................6
     1. **Detailed Exaplanation of the Output**...............6
 
+# **General Information**
 
-# 1.0 **General Information**
+## 1.0 **General Information**
 This section just explains the system in general terms and the purpose that it is intended for.
 
 ## 1.1 **System Overview**
@@ -42,3 +43,14 @@ Getting Started simply explains where to download the maze solver and how to ins
 The Using the Program section will underline a detailed the description of the programs functions.
 
 The reporting section will describe a detailed explanation of what the user will be seeing as the run the program. 
+
+# **System Summary**
+
+## 2.0 **System Summary**
+The system summary provides the general overview and layout of the system. This section will include information on both hardware and software requirements.
+
+## 2.1 **System Configuration**
+Maze Solver will work on computers with 32/64-bit Windows 7, 8, or 10 with Intel Core™ i3, i5, or i7. The computer must have Java™ Runtime Environment 1.5 (32 bit) or 1.6 and it will require at least 2 GB of DDR3/4 RAM. The display of the computer must be set at 1920 x 1080 to fully display all buttons in the program. Maze Solver is not required to be connected to the internet.
+
+## 2.2 **User Access Levels**
+Anyone that downloads the program will be able to use it if their computer meets the specifications required to run the program.
