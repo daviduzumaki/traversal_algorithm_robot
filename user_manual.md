@@ -63,7 +63,7 @@ Getting Started simply explains where to download the maze solver and how to ins
 ## 3.1 **Download and Installation**
 To download the program, simply just click on the link provided. Here are the steps to installing the program:
 
-    1.	Download the file maze_test.jar from the provided download link.
-    2.	Double click on the file to open when it is installed.
+   1.	Download the file maze_test.jar from the provided download link.
+   2.	Double click on the file to open when it is installed.
 
     
