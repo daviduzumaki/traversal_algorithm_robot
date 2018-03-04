@@ -4,7 +4,7 @@ David Ajayi
 
 User Manual
 
-H1 **Table of Contents**
+**Table of Contents**
 1. **General Information**...................................1
     1. **System Overview**...................................1
     2. **Format Of User manual**.............................1
