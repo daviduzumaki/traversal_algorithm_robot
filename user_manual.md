@@ -25,5 +25,5 @@ User Manual
     1. **Detailed Exaplanation of the Output**...............6
 
 
-# 1.0 General Information
-
+# 1.0 **General Information**
+This section just explains the system in general terms and the purpose that it is intended for.
