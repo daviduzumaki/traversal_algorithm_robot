@@ -72,7 +72,7 @@ If you have downloaded and installed the program correctly, the layout in image 
 
 If all the buttons in the program are not displayed, go to the display setting and set your screen resolution to 1920 x 1080.
 
-# Using the Program
+# **Using the Program**
 
 ## **4.0 Using the Program**
 The Using the Program section will underline a detailed the description of the programs functions.
