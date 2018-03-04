@@ -69,4 +69,4 @@ To download the program, simply just click on the link provided. Here are the st
 ## 3.2 Program Layout
 If you have downloaded and installed the program correctly, the layout in image below (Figure 1) is what you should see.
 
-![](https://imgur.com/a/DEDFs)
+![](https://imgur.com/53rO5RY)
