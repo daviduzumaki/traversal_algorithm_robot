@@ -1,34 +1,6 @@
 ## User&#39;s Manual
 
-##
-
-##
-
 # Maze Solver
-
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-
-#
 
 ## Table of contents
 
@@ -62,18 +34,6 @@ Page #
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 General Information
 
 1. 0General Information
@@ -100,16 +60,6 @@ The Using the Program section will underline a detailed the description of the p
 
 The reporting section will describe a detailed explanation of what the user will be seeing as the run the program.
 
-
-
-
-
-
-
-
-
-
-
 System summary
 
 2.0        System Summary
@@ -123,23 +73,6 @@ Maze Solver will work on computers with 32/64-bit Windows 7, 8, or 10 with Intel
 2.2        User Access Levels
 
 Anyone that downloads the program will be able to use it if their computer meets the specifications required to run the program.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Getting Started
