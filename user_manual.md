@@ -34,7 +34,11 @@ The software implements maze generation. The program will allow for a user to ge
 
 ## 1.2 **Format Of User Manual**
 The user manual for this program will be made up of 5 sections: General Information, System Summary, Getting Started, Using the Program, and Reporting.
+
 The system summary provides the general overview and layout of the system. This section will include information on both hardware and software requirements.
+
 Getting Started simply explains where to download the maze solver and how to install it onto your computer.
+
 The Using the Program section will underline a detailed the description of the programs functions.
+
 The reporting section will describe a detailed explanation of what the user will be seeing as the run the program. 
