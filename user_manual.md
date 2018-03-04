@@ -27,3 +27,7 @@ User Manual
 
 # 1.0 **General Information**
 This section just explains the system in general terms and the purpose that it is intended for.
+
+## 1.1 **System Overview**
+The main idea of this project revolves around various path finding algorithms, such as BFS, DFS, Greedy, A*, and Dijkstra’s algorithm. The purpose is to visualize how these algorithms work internally to provide a better understanding for anyone who has difficulty grasping the various algorithms.
+The software implements maze generation. The program will allow for a user to generate a grid of a range of sizes, draw their own grid in real-time, determine animation speed and generate random mazes for use of ease.
