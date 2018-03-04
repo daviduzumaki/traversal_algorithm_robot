@@ -121,5 +121,5 @@ After the robot has finished searching the maze, the image below (Figure 2) will
 
 The user will also see a short description of the algorithm they have chosen, as well as the total number of nodes expanded and the number of squares taken by the shortest path.
 
-![] (https://imgur.com/LCggluK.png)
+![] (https://imgur.com/z9lMUhn.png)
 
