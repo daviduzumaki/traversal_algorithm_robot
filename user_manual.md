@@ -69,7 +69,7 @@ To download the program, simply just click on the link provided. Here are the st
 ## **3.2 Program Layout**
 If you have downloaded and installed the program correctly, the layout in image below (Figure 1) is what you should see.
 
-![] (https://imgur.com/53rO5RY.png)
+                    ![] (https://imgur.com/53rO5RY.png)
 
 If all the buttons in the program are not displayed, go to the display setting and set your screen resolution to 1920 x 1080.
 
@@ -81,4 +81,4 @@ The Using the Program section will underline a detailed the description of the p
 ## **4.1 Buttons**
 *	Create Maze – This button allows the user to create any maze. This is the first button the user should click.
 
-![](https://imgur.com/IfEHjI9.png)
+                    ![] (https://imgur.com/IfEHjI9.png)
