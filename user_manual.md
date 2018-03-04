@@ -66,4 +66,7 @@ To download the program, simply just click on the link provided. Here are the st
    1.	Download the file maze_test.jar from the provided download link.
    2.	Double click on the file to open when it is installed.
 
-    
+## 3.2 Program Layout
+If you have downloaded and installed the program correctly, the layout in image below (Figure 1) is what you should see.
+
+![](https://drive.google.com/open?id=11fkpTcHkW_UkxwTjsAgcOmohHg1WIRP5)
