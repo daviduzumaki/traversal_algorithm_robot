@@ -18,8 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.Timer;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
 
 public class mazeUI extends JPanel {
@@ -94,7 +92,7 @@ public class mazeUI extends JPanel {
                 
 
         
-                                      // pointing the predecessor cell
+                                     
         ArrayList<Node> openSet   = new ArrayList();// the OPEN SET
         ArrayList<Node> closedSet = new ArrayList();// the CLOSED SET
         ArrayList<Node> graph     = new ArrayList();// the set of nodes of the graph
@@ -179,7 +177,6 @@ public class mazeUI extends JPanel {
 
            //Color design choice dervies from Google's material design: https://material.io/guidelines/style/color.html#color-color-palette
             mazeButton = new JButton("Create Maze");
-            Border margin = new EmptyBorder(5,15,5,15);
            // mazeButton.setOpaque(true);
             mazeButton.setFocusPainted(false);
             mazeButton.setBorderPainted(false);
@@ -196,7 +193,6 @@ public class mazeUI extends JPanel {
             clearButton.addActionListener(this::clearButtonAction);
 
             CPUTimeButton = new JButton("<html><font size = \"2\"> Real Time(CPU Time)</font>");
-            //realTimeButton.addActionListener(new ActionHandler());
             CPUTimeButton.setFocusPainted(false);
             CPUTimeButton.setBorderPainted(false);
             CPUTimeButton.setForeground(Color.white);
@@ -262,8 +258,8 @@ public class mazeUI extends JPanel {
 
             algoPanel = new JPanel();
             algoPanel.setBorder(javax.swing.BorderFactory.
-                    createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(),
-                    "Search Algorithms", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
+                    createTitledBorder(javax.swing.BorderFactory.createLineBorder(Color.decode("#448AFF")),
+                    "<html><font color = \"White\">Search Algorithms</font></html>", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                     javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 0, 14)));
             algoPanel.setForeground(Color.white);
             algoPanel.setBackground(Color.decode("#448AFF"));
@@ -281,8 +277,9 @@ public class mazeUI extends JPanel {
             dfs.setSelected(true);  // DFS is initially selected 
             
           
-            //* super is calling the Jpanel class. Here we're addng all our Jbuttons and Jabels to be printed to screen.
-         
+            /** super is calling the Jpanel class. 
+             * Here we're addng all our Jbuttons and Jabels to be printed to screen.
+             */
             super.add(message);
             super.add(mazeButton);
             super.add(clearButton);
@@ -296,15 +293,9 @@ public class mazeUI extends JPanel {
             super.add(greedy);
             super.add(dijkstra);
             super.add(algoPanel);  
-           
-            
-            // end Jpanel content printing.
-           
-
+           // end Jpanel element printing.
            
             //(dimensionX in Pixels, dimensionY in Pixels, width of actual Jelement, height of actual Jelement)
-            
-   
             message.setBounds(58, 850, 400, 75);
             dfsMessage.setBounds(40,450, 400, 500);
             bfsMessage.setBounds(40,450, 400, 500);
@@ -330,19 +321,12 @@ public class mazeUI extends JPanel {
             // we create the timer
             timer = new Timer(speedControl, action);
             
-            /**The maze is not initialized at the start as it should only be done so
+            /** The maze is not initialized at the start as it should only be done so
               * when the user clicks "create Maze"
-              * */
+              */
             initializeMaze(false);
 
         } // end constructor
-
-        /**
-         * Creates a new clean grid or a new maze
-         */
-        
-        
-        
            private final static int
             INFINITY = Integer.MAX_VALUE, // Infinity
             EMPTY    = 0,  // empty cell
@@ -364,42 +348,40 @@ public class mazeUI extends JPanel {
            
          int rows    = 40,           // the number of rows of the grid
              columns = 40,           // the number of columns of the grid
-             gridSize = 500/rows;  //size of grid in pixels. Should coorelate with dimensions of the Jframe
+             gridSize = 500/rows;    //size of grid in pixels. Should coorelate with dimensions of the Jframe
+         
          
         private void initializeMaze(Boolean makeMaze) {                                           
-          
-            // if the rows or columns are even make them odd. This gives space for the maze to be placed in the grid.
+            //Boolean is acting like a flag
+            // if the rows or columns are even make them odd. 
+            //This gives space for the maze to be placed in the grid.
             if (makeMaze && rows % 2 == 0)
                 rows -= 1;
             if (makeMaze && columns % 2 == 0)
                 columns -= 1;
    
             grid = new int[rows][columns];
-            //Node(y,x)
-          //  robotStart = new Node(rows-2,1);
-            //goalLocation = new Node(1,columns-2);
-            fillGrid();
+           
+            robotStart = new Node(rows+4,5);
+            goalLocation = new Node(1,columns-2);
+            initializeGrid();
             if (makeMaze) {
                 createMaze maze = new createMaze(rows/2,columns/2);
                 for (int x = 0; x < maze.gridRow; x++)
                     for (int y = 0; y < maze.gridColumn; y++)
-                        if (maze.mazeGrid[x][y] == 'X')  // wallChar
+                        if (maze.mazeGrid[x][y] == 'X')  // wallChar from the createMaze class
                             grid[x][y] = OBST;
             }
         } // end initializeGrid()
    
         /**
-         * Gives initial values ​​for the cells in the grid.
+         * Initial values ​​for the Nodes in the grid.
          */
-        private void fillGrid() {
+        private void initializeGrid() {
             /**
              * With the first click on button 'Clear' clears the data
-             * of any search was performed (Frontier, Closed Set, Route)
-             * and leaves intact the obstacles and the robot and target positions
-             * in order to be able to run another algorithm
-             * with the same data.
-             * We use logical or because if the program is searching (if it's true) it doesn't matter
-             * if we reached the end of the search
+             * of any search that performed and leaves the obstacles
+             * ready for another search to take place within the same generated Maze.
              */
             
             if (searching || endOfSearch){ 
@@ -431,7 +413,7 @@ public class mazeUI extends JPanel {
             endOfSearch = false;
          
             // The first step of the other four algorithms is here
-            // 1. OPEN SET: = [So], CLOSED SET: = []
+            // 1. OPEN SET: = [Initial State of Robot], CLOSED SET: = []
             openSet.removeAll(openSet);
             openSet.add(robotStart);
             closedSet.removeAll(closedSet);
@@ -496,11 +478,11 @@ public class mazeUI extends JPanel {
             
             drawPathButton.setEnabled(true);
             enableRadiosAndChecks();
-            fillGrid();
+            initializeGrid();
         } // end clearButtonAction()
     
         /**
-         * Executes when the user presses the button "Real-Time"
+         *  When "Real Time" is clicked
          */
         private void CPUtimeButtonAction(java.awt.event.ActionEvent evt) {
             if (realTime)
@@ -511,7 +493,6 @@ public class mazeUI extends JPanel {
             // start of search, because obstacles must be in place.
             if (dijkstra.isSelected())
                initializeDijkstra();
-            CPUTimeButton.setForeground(Color.green);
             algoRadioButtonDisabling();
             CPUtimeAction();
         } // end CPUtimeButtonAction()
@@ -528,8 +509,6 @@ public class mazeUI extends JPanel {
     
         /**
          * When the user clicks "Draw Path". 
-         * Conditional and is used because if the program is searching the result will be false so it 
-         * doesn't matter is dijkstra is selected or not
          */
         private void drawPathButtonActionPerformed(java.awt.event.ActionEvent evt) {
             drawnPath = true;
@@ -546,7 +525,7 @@ public class mazeUI extends JPanel {
         } // end drawPathButtonActionPerformed()
     
         /**
-         * The class that is responsible for the animation
+         * Class that handles animation. 
          */
         private class drawPath implements ActionListener {
             @Override
@@ -674,49 +653,53 @@ public class mazeUI extends JPanel {
 
         /**
          * Expands a node and creates his successors
+         * n: = Pseudo code from Wikipedia  (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+         * and pseudo code mentioned in our blog.(https://davidproject.tumblr.com/post/171475569178/the-rest-of-the-algorithms)
+         * Here we're changing the name of u with nodeLeastDist, v to prevNode
+         * and alt to altNode. altNode isn't an actual Node object but just a convenient name.
+         * 
          */
         private void expandNode(){
             // Dijkstra's algorithm is based off distance between nodes so that is handled seperately.
             if (dijkstra.isSelected()){
-                Node nodeWithLeastDist;
-                // 11: while Q is not empty:
+                Node nodeLeastDist;
+                // 12: while Q is not empty:
                 if (graph.isEmpty())
                     return;
-                // 12:  u := vertex in Q (graph) with smallest distance in dist[] ;
-                // 13:  remove u from Q (graph);
-                nodeWithLeastDist = graph.remove(0);
-                // Add vertex u in closed set
-                closedSet.add(nodeWithLeastDist);
+                // 13:  u := Node in Q (graph) with smallest distance in dist[] ;
+                // 15:  remove u from Q (graph);
+                nodeLeastDist = graph.remove(0);
+                // Add Node u in closed set
+                closedSet.add(nodeLeastDist);
                 // If target has been found ...
-                if (nodeWithLeastDist.row == goalLocation.row && nodeWithLeastDist.col == goalLocation.col){
+                if (nodeLeastDist.row == goalLocation.row && nodeLeastDist.col == goalLocation.col){
                     found = true;
                     return;
                 }
-                // Counts nodes that have expanded.
+                // Counts Nodes that have been expanded.
                 expanded++;
-                // Update the color of the cell
-                grid[nodeWithLeastDist.row][nodeWithLeastDist.col] = CLOSED;
-                // 14: if dist[u] = infinity:
-                if (nodeWithLeastDist.dist == INFINITY){
+                // Update the color of the Node
+                grid[nodeLeastDist.row][nodeLeastDist.col] = CLOSED;
+                // 6: if dist[u] = infinity:
+                if (nodeLeastDist.dist == INFINITY){
                     // ... then there is no solution.
                     // 15: break;
                     return;
-                } // 16: end if
+                } 
                 // Create the neighbors of u
-                ArrayList<Node> neighbors = createSuccesors(nodeWithLeastDist, false);
-                // 18: for each neighbor v of u:
-                for (Node prevNodeInOptimalPath: neighbors) {
-                    // 20: alt := dist[u] + dist_between(u, v) ;
-                    double alternateNode = nodeWithLeastDist.dist + distBetween(nodeWithLeastDist,prevNodeInOptimalPath);
-                    // 21: if alt < dist[v]:
-                    if (alternateNode < prevNodeInOptimalPath.dist) {
+                ArrayList<Node> neighbors = createSuccesors(nodeLeastDist, false);
+                // 17: for each neighbor v of u:
+                for (Node prevNode: neighbors) {
+                    // 18: alt := dist[u] + dist_between(u, v) ;
+                    double altNode = nodeLeastDist.dist + distBetween(nodeLeastDist,prevNode);
+                    // 19: if alt < dist[v]:
+                    if (altNode < prevNode.dist) {
                         // 22: dist[v] := alt ;
-                        prevNodeInOptimalPath.dist = alternateNode;
+                        prevNode.dist = altNode;
                         // 23: previous[v] := u ;
-                        prevNodeInOptimalPath.prev = nodeWithLeastDist;
-                        // Update the color of the cell
-                        grid[prevNodeInOptimalPath.row][prevNodeInOptimalPath.col] = OPEN;
-                        // 24: decrease-key v in Q;
+                        prevNode.prev = nodeLeastDist;
+                        // Update the color of the node
+                        grid[prevNode.row][prevNode.col] = OPEN;
                         // (sort list of nodes with respect to dist)
                         Collections.sort(graph, new NodebyDist());
                     }
@@ -724,25 +707,23 @@ public class mazeUI extends JPanel {
             } else { // The handling of the other four algorithms
                 Node current;
                 if (dfs.isSelected() || bfs.isSelected()) {
-                    // Here is the 3rd step of the algorithms DFS and BFS
-                    // 3. Remove the first state, Si, from OPEN SET ...
+                    //2: Remove the first state from the OPEN SET ...
                     current = openSet.remove(0);
                 } else {
-                    // Here is the 3rd step of the algorithms A* and Greedy
-                    // 3. Remove the first state, Si, from OPEN SET,
-                    // for which f(Si) ≤ f(Sj) for all other
-                    // open states Sj  ...
+                    // Here is the 2nd step of the A* and Greedy
+                    // 2: Remove the first state from the OPEN SET,
+                    // for which f(Node) ≤ f(Node) for all Open Nodes.
                     // (sort first OPEN SET list with respect to 'f')
                     Collections.sort(openSet, new NodebyF());
                     current = openSet.remove(0);
                 }
-                // ... and add it to CLOSED SET.
+                // ... and add it to the CLOSED SET.
                 closedSet.add(0,current);
-                // Update the color of the cell
+                // Update the color of the node
                 grid[current.row][current.col] = CLOSED;
                 // If the selected node is the target ...
                 if (current.row == goalLocation.row && current.col == goalLocation.col) {
-                    // ... then terminate etc
+                    // ... then terminate.
                     Node last = goalLocation;
                     last.prev = current.prev;
                     closedSet.add(last);
@@ -751,92 +732,90 @@ public class mazeUI extends JPanel {
                 }
                 // Count nodes that have been expanded.
                 expanded++;
-                // Here is the 4rd step of the algorithms
-                // 4. Create the successors of Si, based on actions
-                //    that can be implemented on Si.
-                //    Each successor has a pointer to the Si, as its predecessor.
+                // 3: Create the successors of the current Node.
+                //    Each successor has a pointer to the Node, as its predecessor.
                 //    In the case of DFS and BFS algorithms, successors should not
-                //    belong neither to the OPEN SET nor the CLOSED SET.
+                //    belong to the OPEN SET or the CLOSED SET.
                 ArrayList<Node> succesors;
                 succesors = createSuccesors(current, false);
-                // Here is the 5th step of the algorithms
-                // 5. For each successor of Si, ...
-                for (Node cell: succesors){
+                // step 3(last part) For each successor of Node...
+                for (Node node: succesors){
                     // ... if we are running DFS ...
                     if (dfs.isSelected()) {
-                        // ... add the successor at the beginning of the list OPEN SET
-                        openSet.add(0, cell);
-                        // Update the color of the cell
-                        grid[cell.row][cell.col] = OPEN;
+                        // ... add the successor to the start of the OPEN SET
+                        openSet.add(0, node);
+                        // Update the color of the node
+                        grid[node.row][node.col] = OPEN;
                         // ... if we are runnig BFS ...
                     } else if (bfs.isSelected()){
                         // ... add the successor at the end of the list OPEN SET
-                        openSet.add(cell);
+                        openSet.add(node);
                         // Update the color of the cell
-                        grid[cell.row][cell.col] = OPEN;
+                        grid[node.row][node.col] = OPEN;
                         // ... if we are running A* or Greedy algorithms (step 5 of A* algorithm) ...
                     } else if (aStar.isSelected() || greedy.isSelected()){
-                        // ... calculate the value f(Sj) ...
-                        int dxg = current.col-cell.col;
-                        int dyg = current.row-cell.row;
-                        int dxh = goalLocation.col-cell.col;
-                        int dyh = goalLocation.row-cell.row;
+                        // ... calculate the value f(Node) ...
+                        // dxg = real cost of x position for g(n)
+                        // dyg = real cost of y position for g(n)
+                        // dxh = heuristic estimate of x position for h(n)
+                        // dxh = heuristic estimate of y position for h(n)
+                        int dxg = current.col-node.col;
+                        int dyg = current.row-node.row;
+                        int dxh = goalLocation.col-node.col;
+                        int dyh = goalLocation.row-node.row;
                       
                        
-                            // calculate the Manhattan distance
+                            // calculate the Manhattan distance which is used for the heuristic estimate
                             if (greedy.isSelected()) {
-                                // especially for the Greedy ...
-                                cell.g = 0;
+                                // Greedy is A* without g(n)
+                                node.g = 0;
                             } else {
-                                cell.g = current.g + Math.abs(dxg)+Math.abs(dyg);
+                                node.g = current.g + Math.abs(dxg)+Math.abs(dyg);
                             }
-                            cell.h = Math.abs(dxh)+Math.abs(dyh);
+                            node.h = Math.abs(dxh)+Math.abs(dyh);
                         
-                        cell.f = cell.g+cell.h;
-                        // ... If Sj is neither in the OPEN SET nor in the CLOSED SET states ...
-                        int openIndex   = isInList(openSet,cell);
-                        int closedIndex = isInList(closedSet,cell);
+                        node.f = node.g+node.h;
+                        // If the Node is not in the Open or Close set...
+                        int openIndex   = getNodeIndex(openSet,node);
+                        int closedIndex = getNodeIndex(closedSet,node);
                         if (openIndex == -1 && closedIndex == -1) {
-                            // ... then add Sj in the OPEN SET ...
-                            // ... evaluated as f(Sj)
-                            openSet.add(cell);
-                            // Update the color of the cell
-                            grid[cell.row][cell.col] = OPEN;
+                            // then add the Node to the Open Set..
+                            // ... evaluated as f(nodeSucessor)
+                            openSet.add(node);
+                            // Update the color of the node
+                            grid[node.row][node.col] = OPEN;
                             // Else ...
                         } else {
-                            // ... if already belongs to the OPEN SET, then ...
+                            // ... if the Node already belongs to the OPEN SET, then ...
                             if (openIndex > -1){
                                 // ... compare the new value assessment with the old one. 
                                 // If old <= new ...
-                                if (openSet.get(openIndex).f <= cell.f) {
-                                    // ... then eject the new node with state Sj.
-                                    // (ie do nothing for this node).
-                                    // Else, ...
+                                if (openSet.get(openIndex).f <= node.f) {
+                                    // ... then replace the new Node successor with the old one
+                                    // Else...
                                 } else {
-                                    // ... remove the element (Sj, old) from the list
-                                    // to which it belongs ...
+                                    // ... remove the old Node sucessor from the list
                                     openSet.remove(openIndex);
-                                    // ... and add the item (Sj, new) to the OPEN SET.
-                                    openSet.add(cell);
-                                    // Update the color of the cell
-                                    grid[cell.row][cell.col] = OPEN;
+                                    // ... and add the new Node successor to the OPEN SET.
+                                    openSet.add(node);
+                                    // Update the color of the node
+                                    grid[node.row][node.col] = OPEN;
                                 }
-                                // ... if already belongs to the CLOSED SET, then ...
+                                // If the Node already belongs to the Closed Set then...
                             } else {
                                 // ... compare the new value assessment with the old one. 
                                 // If old <= new ...
-                                if (closedSet.get(closedIndex).f <= cell.f) {
-                                    // ... then eject the new node with state Sj.
-                                    // (ie do nothing for this node).
-                                    // Else, ...
+                                if (closedSet.get(closedIndex).f <= node.f) {
+                                     // ... then replace the new Node successor with the old one
+                                    // Else...
                                 } else {
-                                    // ... remove the element (Sj, old) from the list
+                                    // ... remove the old Node sucessor from the list
                                     // to which it belongs ...
                                     closedSet.remove(closedIndex);
-                                    // ... and add the item (Sj, new) to the OPEN SET.
-                                    openSet.add(cell);
-                                    // Update the color of the cell
-                                    grid[cell.row][cell.col] = OPEN;
+                                    // ... and add the new Node successor to the OPEN SET.
+                                    openSet.add(node);
+                                    // Update the color of the node
+                                    grid[node.row][node.col] = OPEN;
                                 }
                             }
                         }
@@ -846,17 +825,18 @@ public class mazeUI extends JPanel {
         } //end expandNode()
         
         /**
-         * Creates the successors of a state/cell
+         * Creates the successors of a Node.
          * 
-         * @param current       the cell for which we ask successors
-         * @param makeConnected flag that indicates that we are interested only on the coordinates
-         *                      of cells and not on the label 'dist' (concerns only Dijkstra's)
-         * @return              the successors of the cell as a list
+         * @param current       The Node we're asking successors from
+         * @param makeConnected flag that indicates that we are interested only in the coordinates
+         *                      of Nodes and not the 'dist' value (concerns only Dijkstra's)
+         * 
+         * @return              the successors of the Node as a list
          */
         private ArrayList<Node> createSuccesors(Node current, boolean makeConnected){
             int r = current.row;
             int c = current.col;
-            // We create an empty list for the successors of the current cell.
+            // Empty list for the successors of the current Node
             ArrayList<Node> temp = new ArrayList<>();
          
             
@@ -864,120 +844,120 @@ public class mazeUI extends JPanel {
             // 1: Up 2: Right 3: Down 4: Left
             
             // If not at the topmost limit of the grid
-            // and the up-side cell is not an obstacle ...
+            // and the immediate Node above is not an obstacle...
             if (r > 0 && grid[r-1][c] != OBST &&
                     // ... and (only in the case are not running the A* or Greedy)
                     // not already belongs neither to the OPEN SET nor to the CLOSED SET ...
                     ((aStar.isSelected() || greedy.isSelected() || dijkstra.isSelected()) ? true :
-                          isInList(openSet,new Node(r-1,c)) == -1 &&
-                          isInList(closedSet,new Node(r-1,c)) == -1)) {
-                Node cell = new Node(r-1,c);
-                // In the case of Dijkstra's algorithm we can not append to
-                // the list of successors the "naked" cell we have just created.
-                // The cell must be accompanied by the label 'dist',
-                // so we need to track it down through the list 'graph'
-                // and then copy it back to the list of successors.
-                // The flag makeConnected is necessary to be able
-                // the present method createSuccesors() to collaborate
-                // with the method findConnectedComponent(), which creates
-                // the connected component when Dijkstra's initializes.
+                          getNodeIndex(openSet,new Node(r-1,c)) == -1 &&
+                          getNodeIndex(closedSet,new Node(r-1,c)) == -1)) {
+                Node node = new Node(r-1,c);
+                /*
+                * In the case of Dijkstra you can't just append a Node to the
+                * list of successors without the "dist" value. So we track this down
+                * through the "graph" list and copy it into the list of successors.
+                *
+                * makeConnected is acting as a flag (if connected then...) to allow
+                * createSuccessors() to work with findConnectedNode()
+                * which creates the connected Node when Dijkstra's intiliazes.
+                */
                 if (dijkstra.isSelected()){
                     if (makeConnected)
-                        temp.add(cell);
+                        temp.add(node);
                     else {
-                        int graphIndex = isInList(graph,cell);
+                        int graphIndex = getNodeIndex(graph,node);
                         if (graphIndex > -1)
                             temp.add(graph.get(graphIndex));
                     }
                 } else {
-                    // ... update the pointer of the up-side cell so it points the current one ...
-                    cell.prev = current;
-                    // ... and add the up-side cell to the successors of the current one. 
-                    temp.add(cell);
+                    // ... update the pointer of the above node so it points the current one ...
+                    node.prev = current;
+                    // ... and add the above node to the successors of the current one. 
+                    temp.add(node);
                  }
             }
           
             // If not at the rightmost limit of the grid
-            // and the right-side cell is not an obstacle ...
+            // and the right-side node is not an obstacle ...
             if (c < columns-1 && grid[r][c+1] != OBST &&
-                    // ... and (only in the case are not running the A* or Greedy)
-                    // not already belongs neither to the OPEN SET nor to the CLOSED SET ...
+                    // ... and (only in the case A* or Greedy isn't running because A* and Greedy update Nodes in the Open and closed set)
+                    // the node doesn't belong to the Open or Closed Set
                     ((aStar.isSelected() || greedy.isSelected() || dijkstra.isSelected())? true :
-                          isInList(openSet,new Node(r,c+1)) == -1 &&
-                          isInList(closedSet,new Node(r,c+1)) == -1)) {
-                Node cell = new Node(r,c+1);
+                          getNodeIndex(openSet,new Node(r,c+1)) == -1 &&
+                          getNodeIndex(closedSet,new Node(r,c+1)) == -1)) {
+                Node node = new Node(r,c+1);
                 if (dijkstra.isSelected()){
                     if (makeConnected)
-                        temp.add(cell);
+                        temp.add(node);
                     else {
-                        int graphIndex = isInList(graph,cell);
+                        int graphIndex = getNodeIndex(graph,node);
                         if (graphIndex > -1)
                             temp.add(graph.get(graphIndex));
                     }
                 } else {
-                    // ... update the pointer of the right-side cell so it points the current one ...
-                    cell.prev = current;
-                    // ... and add the right-side cell to the successors of the current one. 
-                    temp.add(cell);
+                    // ... update the pointer of the right-side node so it points the current one ...
+                    node.prev = current;
+                    // ... and add the right-side node to the successors of the current one. 
+                    temp.add(node);
                 }
             }
            
             // If not at the lowermost limit of the grid
-            // and the down-side cell is not an obstacle ...
+            // and the node below is not an obstacle ...
             if (r < rows-1 && grid[r+1][c] != OBST &&
-                    // ... and (only in the case are not running the A* or Greedy)
-                    // not already belongs neither to the OPEN SET nor to the CLOSED SET ...
+                    // ... and (only in the case A* or Greedy isn't running because A* and Greedy update Nodes in the Open and closed set)
+                    // the node doesn't belong to the Open or Closed Set
                     ((aStar.isSelected() || greedy.isSelected() || dijkstra.isSelected()) ? true :
-                          isInList(openSet,new Node(r+1,c)) == -1 &&
-                          isInList(closedSet,new Node(r+1,c)) == -1)) {
-                Node cell = new Node(r+1,c);
+                          getNodeIndex(openSet,new Node(r+1,c)) == -1 &&
+                          getNodeIndex(closedSet,new Node(r+1,c)) == -1)) {
+                Node node = new Node(r+1,c);
                 if (dijkstra.isSelected()){
                     if (makeConnected)
-                        temp.add(cell);
+                        temp.add(node);
                     else {
-                        int graphIndex = isInList(graph,cell);
+                        int graphIndex = getNodeIndex(graph,node);
                         if (graphIndex > -1)
                             temp.add(graph.get(graphIndex));
                     }
                 } else {
-                   // ... update the pointer of the down-side cell so it points the current one ...
-                    cell.prev = current;
-                    // ... and add the down-side cell to the successors of the current one. 
-                    temp.add(cell);
+                   // ... update the pointer of the Node below so it points the current one ...
+                    node.prev = current;
+                    // ... and add the Node below to the successors of the current one. 
+                    temp.add(node);
                 }
             }
          
             // If not at the leftmost limit of the grid
-            // and the left-side cell is not an obstacle ...
+            // and the left-side Node is not an obstacle ...
             if (c > 0 && grid[r][c-1] != OBST && 
-                    // ... and (only in the case are not running the A* or Greedy)
-                    // not already belongs neither to the OPEN SET nor to the CLOSED SET ...
+                    // ... and (only in the case A* or Greedy isn't running because A* and Greedy update Nodes in the Open and closed set)
+                    // the node doesn't belong to the Open or Closed Set
                     ((aStar.isSelected() || greedy.isSelected() || dijkstra.isSelected()) ? true :
-                          isInList(openSet,new Node(r,c-1)) == -1 &&
-                          isInList(closedSet,new Node(r,c-1)) == -1)) {
-                Node cell = new Node(r,c-1);
+                          getNodeIndex(openSet,new Node(r,c-1)) == -1 &&
+                          getNodeIndex(closedSet,new Node(r,c-1)) == -1)) {
+                Node node = new Node(r,c-1);
                 if (dijkstra.isSelected()){
                     if (makeConnected)
-                        temp.add(cell);
+                        temp.add(node);
                     else {
-                        int graphIndex = isInList(graph,cell);
+                        int graphIndex = getNodeIndex(graph,node);
                         if (graphIndex > -1)
                             temp.add(graph.get(graphIndex));
                     }
                 } else {
-                   // ... update the pointer of the left-side cell so it points the current one ...
-                    cell.prev = current;
-                    // ... and add the left-side cell to the successors of the current one. 
-                    temp.add(cell);
+                   // ... update the pointer of the left-side Node so it points the current one ...
+                    node.prev = current;
+                    // ... and add the left-side Node to the successors of the current one. 
+                    temp.add(node);
                 }
             }
           
-            // When DFS algorithm is in use, cells are added one by one at the beginning of the
+            // When DFS algorithm is in use, Nodes are added one by one at the beginning of the
             // OPEN SET list. Because of this, we must reverse the order of successors formed,
             // so the successor corresponding to the highest priority, to be placed
             // the first in the list.
             // For the Greedy, A* and Dijkstra's no issue, because the list is sorted
-            // according to 'f' or 'dist' before extracting the first element of.
+            // according to 'f' or 'dist'.
             if (dfs.isSelected())
                 Collections.reverse(temp);
             
@@ -985,11 +965,7 @@ public class mazeUI extends JPanel {
         } // end createSuccesors()
         
         /**
-         * Returns the distance between two cells
-         *
-         * @param u the first cell
-         * @param v the other cell
-         * @return  the distance between the cells u and v
+         * Returns the distance between two Nodes
          */
         private double distBetween(Node u, Node v){
             double dist;
@@ -1004,18 +980,13 @@ public class mazeUI extends JPanel {
         } // end distBetween()
         
         /**
-         * Returns the index of the cell 'current' in the list 'list'
-         *
-         * @param list    the list in which we seek
-         * @param current the cell we are looking for
-         * @return        the index of the cell in the list
-         *                if the cell is not found returns -1
+         * Returns the index of the "current" Node in the "list"
          */
-        private int isInList(ArrayList<Node> list, Node current){
+        public int getNodeIndex(ArrayList<Node> list, Node current){
             int index = -1;
             for (int i = 0 ; i < list.size(); i++) {
-                Node listItem = list.get(i);
-                if (current.row == listItem.row && current.col == listItem.col) {
+                Node node = list.get(i);
+                if (current.row == node.row && current.col == node.col) {
                     index = i;
                     break;
                 }
@@ -1024,36 +995,23 @@ public class mazeUI extends JPanel {
         } // end isInList()
         
         /**
-         * Returns the predecessor of cell 'current' in list 'list'
-         *
-         * @param list      the list in which we seek
-         * @param current   the cell we are looking for
-         * @return          the predecessor of cell 'current'
-         */
-        private Node findPrev(ArrayList<Node> list, Node current){
-            int index = isInList(list, current);
-            Node listItem = list.get(index);
-            return listItem.prev;
-        } // end findPrev()
-        
-        /**
-         * Calculates the path from the target to the initial position
-         * of the robot, counts the corresponding steps
+         * Calculates the path from goal to the robot.
+         * Counts the corresponding steps
          * and measures the distance traveled.
          */
         private void plotRoute(){
             int steps = 0;
             double distance = 0;
-            int index = isInList(closedSet,goalLocation);
-            Node cur = closedSet.get(index);
-            grid[cur.row][cur.col]= TARGET;
+            int index = getNodeIndex(closedSet,goalLocation);
+            Node current = closedSet.get(index);
+            grid[current.row][current.col]= TARGET;
             do {
                 steps++;
                 
                     distance++;
-                cur = cur.prev;
-                grid[cur.row][cur.col] = ROUTE;
-            } while (!(cur.row == robotStart.row && cur.col == robotStart.col));
+                current = current.prev;
+                grid[current.row][current.col] = ROUTE;
+            } while (!(current.row == robotStart.row && current.col == robotStart.col));
             grid[robotStart.row][robotStart.col]=ROBOT;
             String msg;
             String colorMsg = "<html><font color = \"#448AFF\">Nodes expanded: %d, Shortest Path: %d </font></html>";
@@ -1064,87 +1022,80 @@ public class mazeUI extends JPanel {
         } // end plotRoute()
         
         /**
-         * Appends to the list containing the nodes of the graph only
-         * the cells belonging to the same connected component with node v.
-         * This is a Breadth First Search of the graph starting from node v.
-         *
-         * @param v    the starting node
+         * Appends to the list containing the Nodes of the graph only
+         * the Nodes belonging to the same vicinity with Node current.
+         * This is a Breadth First Search of the graph starting from node current.
          */
-        private void findConnectedComponent(Node v){
+        private void findConnectedNode(Node current){
             Stack<Node> stack;
             stack = new Stack();
             ArrayList<Node> succesors;
-            stack.push(v);
-            graph.add(v);
+            stack.push(current);
+            graph.add(current);
             while(!stack.isEmpty()){
-                v = stack.pop();
-                succesors = createSuccesors(v, true);
-                for (Node c: succesors) {
-                    if (isInList(graph, c) == -1){
-                        stack.push(c);
-                        graph.add(c);
+                current = stack.pop();
+                succesors = createSuccesors(current, true);
+                for (Node i: succesors) {
+                    if (getNodeIndex(graph, i) == -1){
+                        stack.push(i);
+                        graph.add(i);
                     }
                 }
             }
         } // end findConnectedComponent()
         
         /**
-         * Initialization of Dijkstra's algorithm
+         * Initialization of Dijkstra's algorithm.
+         * 
+         * Robot is still looking for the target while there are still nodes in the open set.
+         * Only when there's nothing left in open set and the target hasn't been found after
+         * the search has ended will there be no solution
+         * The program acts as a connected graph search method.
+         * Meaning, it will only work if the robot is searching Nodes that are in the
+         * same vicinity as the robot.
+         * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
          */
+       
         private void initializeDijkstra() {
-            /**
-             * When one thinks of Wikipedia pseudocode, observe that the
-             * algorithm is still looking for his target while there are still
-             * nodes in the queue Q.
-             * Only when we run out of queue and the target has not been found,
-             * can answer that there is no solution .
-             * As is known, the algorithm models the problem as a connected graph.
-             * It is obvious that no solution exists only when the graph is not
-             * connected and the target is in a different connected component
-             * of this initial position of the robot.
-             * To be thus possible negative response from the algorithm,
-             * should search be made ONLY in the coherent component to which the
-             * initial position of the robot belongs.
-             * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-             */
-            
-            // First create the connected component
-            // to which the initial position of the robot belongs.
+     
+            // 1: Create the connected Node from the position of the 
+            // initial position of the robot
             graph.removeAll(graph);
-            findConnectedComponent(robotStart);
+            findConnectedNode(robotStart);
             // Here is the initialization of Dijkstra's algorithm 
-            // 2: for each vertex v in Graph;
-            for (Node v: graph) {
-                // 3: dist[v] := infinity ;
-                v.dist = INFINITY;
-                // 5: previous[v] := undefined ;
-                v.prev = null;
+            
+            // 5: for each Node n in Graph;
+            for (Node n: graph) {
+                // 6: dist[n] := infinity ; This is because the path to the goal is unknown
+                // but potentially exists.
+                n.dist = INFINITY;
+                // Step 7: previous[n] := undefined ;
+                n.prev = null;
             }
-            // 8: dist[source] := 0;
-            graph.get(isInList(graph,robotStart)).dist = 0;
-            // 9: Q := the set of all nodes in Graph;
+            // 10: dist[robotStart] := 0; Distance from robotStart position to itself.
+            graph.get(getNodeIndex(graph,robotStart)).dist = 0;
+            // 12: Q := the set of all nodes in Graph;
             // Instead of the variable Q we will use the list
             // 'graph' itself, which has already been initialised.            
 
-            // Sorts the list of nodes with respect to 'dist'.
+            // Sorts the list of nodes with respect to distance.
             Collections.sort(graph, new NodebyDist());
-            /* Initializes the list of closed nodes to have none visisted. 
-            * In case it some nodes were carried from the last time the program was ran
-            */
+            
+            // Then we set all Nodes in the closed set to not visited.
+            // In case anything is carried over from the last time the program was ran.
             closedSet.removeAll(closedSet);
         } // end initializeDijkstra()
+        
 
         /**
-         * Repaints the grid
+         * Draw and colourize grid
          */
-        
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
+             // Fills the background color.
             g.setColor(Color.DARK_GRAY);
-            // Fills the background color.
-            g.fillRect(10, 10, columns*gridSize+1, rows*gridSize+1);
-
+           
             for (int r = 0; r < rows; r++) {
                 for (int c = 0; c < columns; c++) {
                     if (grid[r][c] == EMPTY) {
@@ -1162,7 +1113,9 @@ public class mazeUI extends JPanel {
                     } else if (grid[r][c] == ROUTE) {
                         g.setColor(Color.YELLOW);
                     }
-                    g.fillRect(11 + c*gridSize, 11 + r*gridSize, gridSize - 1, gridSize - 1);
+                    // fillRect(position x,position y, size width, size height)
+                    //gridSize to eliminate lines. -1 is used in order to offset the color position.
+                    g.fillRect(11 + c*gridSize, 11 + r*gridSize, gridSize , gridSize );
                 }
             }
            
@@ -1171,7 +1124,7 @@ public class mazeUI extends JPanel {
         } // end paintComponent()
         
       
-    } // end nested classs MazePanel
+    } // end MazuUI Panel
   
     
     
