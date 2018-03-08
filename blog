@@ -1,1 +1,0 @@
-https://davidproject.tumblr.com/
