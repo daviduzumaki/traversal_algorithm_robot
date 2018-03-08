@@ -120,7 +120,6 @@ public class mazeUI extends JPanel {
     
 
         int[][] grid;        // the grid
-        boolean realTime;    // Solution is displayed instantly
         boolean found;       // notify that the goal was found
         boolean searching;   // notify that the search is in progress
         boolean endOfSearch; // notify that the search is over
@@ -208,11 +207,11 @@ public class mazeUI extends JPanel {
             drawPathButton.setBackground(Color.decode("#448AFF"));
             drawPathButton.addActionListener(this::drawPathButtonActionPerformed);
 
-            speedLabel = new JLabel("Speed(0-100 ms)", JLabel.CENTER);
+            speedLabel = new JLabel("Speed(0-1 second)", JLabel.CENTER);
             speedLabel.setForeground(Color.white);
             speedLabel.setFont(new Font("Arial",Font.PLAIN,15));
             
-            speedController = new JSlider(0,100,20); // initial value of delay 100 msec
+            speedController = new JSlider(0,1000,20); // initial value of delay 1000 msec
             speedController.setForeground(Color.white);
             speedController.setBackground(Color.decode("#448AFF"));
             speedControl = speedController.getValue();
@@ -299,7 +298,7 @@ public class mazeUI extends JPanel {
             message.setBounds(58, 850, 400, 75);
             dfsMessage.setBounds(40,450, 400, 500);
             bfsMessage.setBounds(40,450, 400, 500);
-            astarMessage.setBounds(40,425, 400, 500);
+            astarMessage.setBounds(40,429, 400, 500);
             greedyMessage.setBounds(40,450, 400, 500);
             dijkstraMessage.setBounds(40,450, 400, 500);
             mazeButton.setBounds(10, 520, 140, 50); 
@@ -319,7 +318,7 @@ public class mazeUI extends JPanel {
         
 
             // we create the timer
-            timer = new Timer(speedControl, action);
+           timer = new Timer(speedControl, action);
             
             /** The maze is not initialized at the start as it should only be done so
               * when the user clicks "create Maze"
@@ -346,8 +345,8 @@ public class mazeUI extends JPanel {
           *  int gridResponsiveSizer  = (int) screenSize.getWidth();
           */
            
-         int rows    = 40,           // the number of rows of the grid
-             columns = 40,           // the number of columns of the grid
+         int rows    = 70,           // the number of rows of the grid
+             columns = 70,           // the number of columns of the grid
              gridSize = 500/rows;    //size of grid in pixels. Should coorelate with dimensions of the Jframe
          
          
@@ -458,7 +457,7 @@ public class mazeUI extends JPanel {
          */
         private void createMazeButtonAction(java.awt.event.ActionEvent evt) {
             drawnPath = false;
-            realTime = false;
+        
             CPUTimeButton.setEnabled(true);
             CPUTimeButton.setForeground(Color.black);
             
@@ -472,7 +471,7 @@ public class mazeUI extends JPanel {
          */
         private void clearButtonAction(java.awt.event.ActionEvent evt) {
             drawnPath = false;
-            realTime = false;
+       
             CPUTimeButton.setEnabled(true);
             CPUTimeButton.setForeground(Color.black);
             
@@ -485,10 +484,6 @@ public class mazeUI extends JPanel {
          *  When "Real Time" is clicked
          */
         private void CPUtimeButtonAction(java.awt.event.ActionEvent evt) {
-            if (realTime)
-                return;
-            realTime = true;
-            searching = true;
             // The Dijkstra's initialization should be done just before the
             // start of search, because obstacles must be in place.
             if (dijkstra.isSelected())
@@ -833,7 +828,7 @@ public class mazeUI extends JPanel {
          * 
          * @return              the successors of the Node as a list
          */
-        private ArrayList<Node> createSuccesors(Node current, boolean makeConnected){
+        public ArrayList<Node> createSuccesors(Node current, boolean makeConnected){
             int r = current.row;
             int c = current.col;
             // Empty list for the successors of the current Node
@@ -961,7 +956,12 @@ public class mazeUI extends JPanel {
             if (dfs.isSelected())
                 Collections.reverse(temp);
             
+            for (int i = 0; i < temp.size(); i++){
+                System.out.println(temp.get(i));
+            }
+            
             return temp;
+            
         } // end createSuccesors()
         
         /**
@@ -982,7 +982,7 @@ public class mazeUI extends JPanel {
         /**
          * Returns the index of the "current" Node in the "list"
          */
-        public int getNodeIndex(ArrayList<Node> list, Node current){
+        private int getNodeIndex(ArrayList<Node> list, Node current){
             int index = -1;
             for (int i = 0 ; i < list.size(); i++) {
                 Node node = list.get(i);
@@ -1115,7 +1115,7 @@ public class mazeUI extends JPanel {
                     }
                     // fillRect(position x,position y, size width, size height)
                     //gridSize to eliminate lines. -1 is used in order to offset the color position.
-                    g.fillRect(11 + c*gridSize, 11 + r*gridSize, gridSize , gridSize );
+                    g.fillRect(11 + c*gridSize, 11 + r*gridSize, gridSize-1 , gridSize-1 );
                 }
             }
            
