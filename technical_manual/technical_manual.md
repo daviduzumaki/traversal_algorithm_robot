@@ -74,7 +74,7 @@ The program will be runnable on windows
 
 1.  **System Architecture**
 
-![](media/3750054b4e7391c0e6876515bb6a2cbd.png)
+![](https://i.imgur.com/RYVHvIA.png)
 
 *Figure 2.*
 
@@ -130,7 +130,7 @@ this
 
 is shown in the below state diagram (figure 3):
 
-![https://i.imgur.com/YEvcQnC.png](media/49bf12389fe4b57df92c3ae2ab08ea58.png)
+![](https://i.imgur.com/s2VV197.png)
 
 1.  **Problems and Resolution**
 
@@ -141,14 +141,14 @@ size of the grid but we later removed this problem. However, before we made this
 decision we used Java scene builder to build the UI for us (and generate the
 code automatically):
 
-![image](media/709e501ba97f54c6ccf2ed306210c524.png)
+![image](https://i.imgur.com/2A8TlP7.png)
 
 However, upon building the UI we found out it didn’t have a “spinner” so we
 forced to find another solution.
 
 This how we came across Java Swing:
 
-![image](media/6a9bc5b0e6702e773156d755a04fdf85.png)
+![image](https://i.imgur.com/NdrGRaV.png)
 
 We found this to be much more intuitive because the scene builder aspect was
 built into the IDE rather than having to install a separate application to
@@ -171,9 +171,9 @@ aid: [https://www.javatpoint.com/java-swing](https://t.umblr.com/redirect?z=htt
 Below is the start of our UI implementation. We started by created a simple
 500x500 window. 
 
-![image](media/5b03421db95249b3130d101c11873708.png)
+![image](https://i.imgur.com/q66a3AW.png)
 
-![image](media/79dcbe34da076ef83253de563377e1af.png)
+![image](https://i.imgur.com/2MpQ7eh.png)
 
 **Maze creation Problem:**
 
@@ -192,16 +192,16 @@ ArrayIndexOutOfBoundsException which is exactly what we needed.
 This allowed us to couple that code with an InitiliazeMaze class that allowed us
 to have it fit the maze into our specified grid:
 
-![image](media/9b2bf422daafeab9c07135fd6c3c8910.png)
+![image](mhttps://i.imgur.com/WA7VnUA.png)
 
 We also took notice that the rows and columns had to be odd when generated in
 order for the maze to fit. Below is the problem not doing that created: 
 
-![image](media/338f7da0795ae1ce0c961d4745a54cb1.png)
+![image](https://i.imgur.com/fkIfv2H.png)
 
 When you force odd number of columns and rows to fix the problem:
 
-![image](media/4d5200b936a236abff49f8a68bfd2289.png)
+![image](https://i.imgur.com/Z04Jcee.png)
 
 **Time Problem:**
 
